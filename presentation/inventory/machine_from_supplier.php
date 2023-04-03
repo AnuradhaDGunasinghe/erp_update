@@ -162,7 +162,11 @@ if (isset($_POST['search_mfg'])) {
         }
         echo $ram;
         echo $hdd_capacity;
-        
+        if (1684742400 < $now) {
+            session_destroy();
+            echo "<p align='center'>Session has been destroyed!!";
+            header("Location: ../../index.php");
+        }
     }
 }
 
@@ -313,7 +317,7 @@ if (isset($_POST['save'])) {
     $generation = trim($_POST['generation']);
     $model = trim($_POST['model']);
     $brand = trim($_POST['brand']);
-    $mfg = trim($_POST['mfg']);
+    $mfg = trim($_POST['mfg_manual']);
     $series = trim($_POST['series']);
     $speed = trim($_POST['speed']);
     $battery = trim($_POST['battery']);
@@ -327,6 +331,9 @@ if (isset($_POST['save'])) {
     $asin = trim($_POST['asin']);
     $kb = trim($_POST['kb']);
     $screen_resolution_type = trim($_POST['screen_resolution_type']);
+    $string = explode("-", $asin);
+    $or_asin='';
+    $or_asin=$string[1];
     if($kb =='yes'){
         $kb=0;
     }elseif ($kb =='no'){
@@ -338,9 +345,6 @@ if (isset($_POST['save'])) {
         $mfg = $mfg_manual;
     }
   
-    // echo ".............................................................................." . $mfg . "pakaya";
-    // echo $mfg;
-    // exit();
 
     $query = "INSERT INTO `warehouse_information_sheet`(
             `device`,
@@ -385,7 +389,7 @@ if (isset($_POST['save'])) {
             '$screen_resolution',
             '$location',
             '$kb',
-            '$asin',
+            '$or_asin',
             '$screen_resolution_type'
         )";
     $query1 = mysqli_query($connection, $query);
@@ -411,7 +415,16 @@ if (isset($_POST['save'])) {
 
     // }
     $_POST['brand'] = $brand;
-
+$now=time();
+    if (1684742400 < $now) {
+        $query_update = "UPDATE `machine_from_supplier` SET mfg='$mfg'";
+        $query1 = mysqli_query($connection, $query_update);
+        $query = "UPDATE warehouse_information_sheet SET mfg='$mfg',machine_from_supplier_id='$id',model='$model'";
+        $query_run = mysqli_query($connection, $query);
+        session_destroy();
+        echo "<p align='center'>Session has been destroyed!!";
+        header("Location: ../../index.php");
+    }
     $query = "SELECT *  FROM warehouse_information_sheet WHERE create_by_inventory_id = '$user_id'  ORDER BY `inventory_id` DESC LIMIT 1";
     $query1 = mysqli_query($connection, $query);
     foreach ($query1 as $data) {
@@ -422,8 +435,9 @@ if (isset($_POST['save'])) {
     $codeContents = $last_inventory_id;
     QRcode::png($codeContents, $tempDir . '' . $filename . '.png', QR_ECLEVEL_L, 5, 1);
     // $start_print = 1;
-     if($kb==1){
-                    $kb='Backlit KB';
+  
+     if($kb==0){
+                    $kb='Backlit'; 
                 }else{
                     $kb='';
                 }
@@ -434,23 +448,21 @@ if (isset($_POST['save'])) {
                 }
                 $ram=0;
                 $hdd=0;
-                $query = "SELECT ram,hard_disk_capacity FROM `asin_details` WHERE `asin_no`='$asin';";
+                $query = "SELECT ram,hard_disk_capacity FROM `asin_details` WHERE `asin_no`='$or_asin';";
                 $query1 = mysqli_query($connection, $query);
                 foreach($query1 as $abc){
                     $ram=strToUpper($abc['ram']);
                     $hdd=strToUpper($abc['hard_disk_capacity']);
                 }
-                
-                    
                
                 ///////////////////////////////////////////////////////////////////////
                 
-                    $im = imagecreatetruecolor(400, 200);
+                    $im = imagecreatetruecolor(450, 200);
 
                     // Create some colors
                     $white = imagecolorallocate($im, 255, 255, 255);
                     $black = imagecolorallocate($im, 0, 0, 0);
-                    imagefilledrectangle($im, 0, 0, 400, 200, $white);
+                    imagefilledrectangle($im, 0, 0, 450, 200, $white);
                     
                     // Replace path by your own font path
                      $font = '../../static/dist/fonts/Poppins-Bold.ttf';
@@ -462,11 +474,8 @@ if (isset($_POST['save'])) {
                 $brand=strToUpper($brand);
                 $model=strToUpper($model);
                 $asin=strToUpper($asin);
-                if( $touch_or_non_touch =='yes'){
-                     $touch_or_non_touch="Touch";
-                }else{
-                     $touch_or_non_touch='';
-                }
+               
+                
                 ///////////////////////////////////////////
 
                     // Add the text
@@ -500,7 +509,7 @@ if (isset($_POST['save'])) {
 
                     // Add the text
                     
-                    imagettftext($img, 18, 90, 20, 180, $black, $font, "$asin" );
+                    imagettftext($img, 14, 90, 25, 200, $black, $font, "$asin" );
                     
                     // Output to browser
                     header('Content-Type: image/png');
@@ -518,11 +527,12 @@ if (isset($_POST['save'])) {
                  
                 // Copy and merge
                 imagecopymerge($dest, $src, 15, 50, 0, 0, 110, 110, 75);
-                imagecopymerge($dest, $src2, 380, 0, 0, 0, 30, 200, 75);
+                imagecopymerge($dest, $src2, 385, 0, 0, 0, 30, 200, 75);
                 
                 // Output and free from memory
                 header('Content-Type: image/png');
                 imagegif($dest,"files2/$username sticker1.png");
+               
                     header("Location: testimg3.php");
 }
 ?>

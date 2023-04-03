@@ -115,6 +115,9 @@ if (isset($_POST['submit'])) {
         $screen_resolution_type = $_POST["screen_resolution_type"];
         $inventory_id =trim($inventory_id);
         $comment = $_POST["comment"];
+         $string = explode("-", $asin);
+        $or_asin='';
+        $or_asin=$string[1];
         $sql = strtolower("UPDATE `warehouse_information_sheet` 
         SET
                 brand ='$brand',
@@ -132,7 +135,7 @@ if (isset($_POST['submit'])) {
                 touch_or_non_touch ='$touch_or_non_touch',
                 dvd ='$dvd',
                 keyboard_backlight ='$kb',
-                asin ='$asin',
+                asin ='$or_asin',
                 comment='$comment',
                 create_by_inventory_id='$username',
                 reprint='1'
@@ -147,7 +150,7 @@ if (isset($_POST['submit'])) {
 
                 // (A) IMAGE OBJECT
                 if($kb==1){
-                    $kb='Backlit KB';
+                    $kb='Backlit ';
                 }else{
                     $kb='';
                 }
@@ -158,26 +161,28 @@ if (isset($_POST['submit'])) {
                 }
                 $ram=0;
                 $hdd=0;
-                $query = "SELECT ram,hard_disk_capacity FROM `asin_details` WHERE `asin_no`='$asin';";
+                $query = "SELECT ram,hard_disk_capacity FROM `asin_details` WHERE `asin_no`='$or_asin';";
                 $query1 = mysqli_query($connection, $query);
+                echo $query;
                 foreach($query1 as $abc){
+                     echo $ram;
+                echo $hdd;
+             
                     $ram=strToUpper($abc['ram']);
                     $hdd=strToUpper($abc['hard_disk_capacity']);
                 }
-                
-                    
                
                 ///////////////////////////////////////////////////////////////////////
                 
-                    $im = imagecreatetruecolor(400, 200);
+                    $im = imagecreatetruecolor(450, 200);
 
                     // Create some colors
-                    $white = imagecolorallocate($im, 255, 255, 255);
+                   $white = imagecolorallocate($im, 255, 255, 255);
                     $black = imagecolorallocate($im, 0, 0, 0);
-                    imagefilledrectangle($im, 0, 0, 400, 200, $white);
+                    imagefilledrectangle($im, 0, 0, 450, 200, $white);
                     
                     // Replace path by your own font path
-                     $font = '../../static/dist/fonts/Poppins-ExtraBold.ttf';
+                     $font = '../../static/dist/fonts/Poppins-Bold.ttf';
 
                     // Add some shadow to the text
                     
@@ -186,20 +191,16 @@ if (isset($_POST['submit'])) {
                 $brand=strToUpper($brand);
                 $model=strToUpper($model);
                 $asin=strToUpper($asin);
-                if( $touch_or_non_touch =='yes'){
-                     $touch_or_non_touch="Touch";
-                }else{
-                     $touch_or_non_touch='';
-                }
+                
                 ///////////////////////////////////////////
 
                     // Add the text
-                    imagettftext($im, 15, 0, 10, 15, $black, $font, "$brand    $model" );
+                   imagettftext($im, 15, 0, 10, 15, $black, $font, "$brand    $model" );
                     imagettftext($im, 15, 0, 10, 35, $black, $font, "$core $speed $screen_resolution_type $touch_or_non_touch $kb");
                     if($ram !=0 && $hdd !=0){
                     imagettftext($im, 15, 0, 150, 80, $black, $font, "$ram GB / $hdd GB");
                     }
-                    imagettftext($im, 15, 0, 10, 180, $black, $font, "ALSAKB $inventory_id");
+                    imagettftext($im, 15, 0, 10, 180, $black, $font, "ALSAKB $last_inventory_id");
                     imagettftext($im, 15, 0, 10, 200, $black, $font, "WH2-$generation-$model");
                     
                     // Output to browser
@@ -211,7 +212,7 @@ if (isset($_POST['submit'])) {
                 //////////////////////////////////////////////////////////////////////////
                 
                     ///////////////////////////////////////////////////////////////////////////////////////////
-                      $img = imagecreatetruecolor(40, 200);
+                       $img = imagecreatetruecolor(40, 200);
 
                     // Create some colors
                     $white = imagecolorallocate($im, 255, 255, 255);
@@ -219,12 +220,12 @@ if (isset($_POST['submit'])) {
                     imagefilledrectangle($img, 0, 0, 40, 200, $white);
                     
                     // Replace path by your own font path
-                     $font = '../../static/dist/fonts/Poppins-ExtraBold.ttf';
+                     $font = '../../static/dist/fonts/Poppins-Bold.ttf';
                     // Add some shadow to the text
 
                     // Add the text
                     
-                    imagettftext($img, 15, 90, 20, 180, $black, $font, "$asin" );
+                    imagettftext($img, 14, 90, 25, 200, $black, $font, "$asin" );
                     
                     // Output to browser
                     header('Content-Type: image/png');
@@ -241,8 +242,8 @@ if (isset($_POST['submit'])) {
                 "asin/$username asin.png");
                  
                 // Copy and merge
-                imagecopymerge($dest, $src, 15, 50, 0, 0, 110, 110, 75);
-                imagecopymerge($dest, $src2, 380, 0, 0, 0, 30, 200, 75);
+                  imagecopymerge($dest, $src, 15, 50, 0, 0, 110, 110, 75);
+                imagecopymerge($dest, $src2, 385, 0, 0, 0, 30, 200, 75);
                 
                 // Output and free from memory
                 header('Content-Type: image/png');

@@ -74,6 +74,9 @@ if ($search_value == 'null') {
                 file</a>
             <a href="unit_by_unit.php" class="btn btn-sm btn-success">Download All Unit Excel
                 file</a>
+
+            <a href="asin_list_view.php" class="btn btn-sm btn-info"> ASIN List</a>
+
             <?php }?>
             <!-- <a href="" class="btn btn-sm btn-success">Download Price List</a> -->
             <div class="card mt-3">

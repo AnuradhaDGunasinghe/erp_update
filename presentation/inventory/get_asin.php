@@ -9,12 +9,12 @@
         // $screen_type = mysqli_real_escape_string($connection, $_GET['screen_type']);
 		$name = null;
 	
-		$query 	= "SELECT asin_no,ram,hard_disk_capacity FROM `asin_details` WHERE model like '%$model%' AND brand='$brand' AND core='$core' GROUP BY asin_no  ";
+		$query 	= "SELECT asin_no,id FROM `asin_details` WHERE model like '%$model%' AND brand='$brand' AND core='$core' GROUP BY asin_no  ";
 		$result_set = mysqli_query($connection, $query);
         echo $query;
 		$asin = "<option value=''></option> ";
 		while ( $result = mysqli_fetch_assoc($result_set) ) {
-			$asin .= "<option value=\"{$result['asin_no']}\" class='info_select'>{$result['asin_no']}</option>";
+			$asin .= "<option value=\"#{$result['id']}-{$result['asin_no']}\" class='info_select'>#{$result['id']}-{$result['asin_no']}</option>";
 		}
 		echo $asin;
 	} 
