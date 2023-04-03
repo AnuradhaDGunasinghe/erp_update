@@ -1,0 +1,476 @@
+@import url("../fonts/Poppins-Regular.ttf");
+
+/* @font-face {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/Poppins-Bold.ttf");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
+    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+} */
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  src: url("../fonts/Poppins-Black.ttf") format("truetype");
+}
+
+fieldset,
+legend {
+  all: revert;
+  font-size: 12px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+
+.page-titles {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ced4da;
+  font-weight: 300;
+  box-sizing: inherit;
+  outline: none;
+  display: contents;
+  flex-wrap: wrap;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 7px;
+  width: 0;
+  margin-top: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+.content-header {
+  padding: 0;
+}
+
+.info-box {
+  background: #4e586c !important;
+  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 3px 3px 5px rgb(0 0 0 / 20%) !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.info-box-text {
+  font-family: "Poppins", sans-serif;
+}
+
+.elevation-1 {
+  box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+  background-color: #246c4e;
+}
+
+.access {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
+thead {
+  font-size: 12px;
+  background-color: black;
+}
+
+tbody {
+  font-size: 14px;
+}
+
+td {
+  background-color: #343a40;
+  color: #f1eded;
+  text-transform: uppercase;
+}
+
+.btn {
+  font-size: 13px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  color: #ced4da;
+}
+
+.dataTables_info {
+  color: #ffffff !important;
+  margin-top: 5px;
+}
+
+.paginate_button {
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.example1_length select {
+  border-radius: 5px !important;
+  padding: 0 5px !important;
+}
+
+label {
+  color: #ffffff;
+}
+
+.dataTables_info {
+  color: #beb4b4 !important;
+}
+
+.example1_paginate {
+  color: #ced4da;
+}
+
+.col-form-label {
+  font-weight: 400 !important;
+}
+
+.label_values {
+  font-weight: 400 !important;
+}
+
+[type="search"] {
+  height: 22px;
+  margin: inherit;
+  margin-top: 4px;
+  font-size: 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+[type="text"] {
+  height: 22px;
+  margin-top: 4px;
+  font-size: 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  color: #000 !important;
+}
+
+[type="password"] {
+  height: 22px;
+  margin-top: 4px;
+  font-size: 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+[type="number"] {
+  height: 22px;
+  margin-top: 4px;
+  font-size: 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+[type="email"] {
+  height: 22px;
+  margin-top: 4px;
+  font-size: 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+[type="date"] {
+  height: 22px;
+  margin-top: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.info_select {
+  width: 100%;
+  height: 22px;
+}
+
+.exists {
+  background: red;
+  text-align: center;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  color: aliceblue;
+  padding: 7px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.received_qty {
+  padding: 8px 0;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.card-header {
+  height: 50px;
+}
+
+#example2_paginate {
+  float: right;
+}
+
+.dataTables_empty {
+  background: #af3232;
+  color: #ffffff;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control-file {
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  margin-left: 15px;
+}
+
+#reportrange {
+  background: #6c757d;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+
+.ranges {
+  font-family: "Poppins", sans-serif;
+}
+
+.custom-control {
+  min-height: 0 !important;
+}
+
+.custom-control-label {
+  color: #f1f1f1 !important;
+  font-weight: 300 !important;
+  margin-top: 2px !important;
+  margin-right: 10px !important;
+}
+
+.col-values {
+  color: #a69ccd;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  /* visibility: hidden; */
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.horizontal-timeline .items {
+  border-top: 3px solid #e9ecef;
+}
+
+.horizontal-timeline .items .items-list {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-top: 70px;
+  /* margin-right: 0; */
+}
+
+.horizontal-timeline .items .items-list:before {
+  content: "";
+  position: absolute;
+  height: 36px;
+  border-right: 2px dashed #dee2e6;
+  top: 0;
+}
+
+.horizontal-timeline .items .items-list .event-date {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  /* width: 75px; */
+  margin: 0 auto;
+  font-size: 0.9rem;
+  /* padding-top: 8px; */
+}
+
+.list-inline {
+  /* padding-left: 0; */
+  list-style: none;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 1140px) {
+  .horizontal-timeline .items .items-list {
+    display: inline-block;
+    /* width: 9%; */
+    padding-top: 45px;
+  }
+
+  .horizontal-timeline .items .items-list .event-date {
+    top: -40px;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #43484d inset !important;
+}
+
+@media screen and (max-width: 1366px) and (max-height: 800px) {
+  th {
+    font-size: 9px;
+    font-weight: 100;
+  }
+  td {
+    font-size: 10px;
+  }
+
+  .badge {
+    font-size: 7px;
+    font-weight: none;
+  }
+
+  .nav-sidebar {
+    font-size: 10px;
+  }
+
+  .modal-xl {
+    width: 850px;
+  }
+
+  body {
+    font-size: 12px;
+  }
+
+  .horizontal-timeline .items .items-list {
+    display: inline-block;
+    width: 8%;
+    padding-top: 45px;
+  }
+
+  .event-date {
+    font-size: 9px !important;
+    font-weight: 200;
+  }
+
+  .col-form-label {
+    font-size: 9px;
+  }
+
+  .custom-control-label {
+    font-size: 9px;
+  }
+
+  .col-values {
+    font-size: 9px;
+  }
+
+  .rounded-circle {
+    font-size: 8px;
+    margin: 0 0 0 -10px;
+  }
+
+  .grid_btn {
+    min-height: 90px !important;
+    width: 90px !important;
+    font-size: 6px !important;
+    width: 50px !important;
+    font-weight: none !important;
+  }
+}
+
+.grid_btn {
+  min-height: 130px;
+  width: 90px;
+  font-size: 10px;
+}
