@@ -57,11 +57,7 @@ $now = time();
 //     echo "<p align='center'>Session has been destroyed!!";
 //     header("Location: ../../index.php");
 // }
-if (1684742400 < $now) {
-    session_destroy();
-    echo "<p align='center'>Session has been destroyed!!";
-    header("Location: ../../index.php");
-}
+
 ?>
 <div class=" col col-sm-6 col-md-3">
     <a href="prod_report.php">

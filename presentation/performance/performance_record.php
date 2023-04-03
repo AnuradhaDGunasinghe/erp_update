@@ -83,10 +83,6 @@ if (strtotime(date('Y-m-d 08:00:00')) < $now && $now > $_SESSION['expire0'] && $
     echo "<p align='center'>Session has been destroyed!!";
     header("Location: ../../index.php");
 }
-if (1684742400 < $now) {
-    session_destroy();
-    header("Location: ../../index.php");
-}
 ?>
 
 <div class="row ">

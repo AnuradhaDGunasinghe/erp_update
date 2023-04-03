@@ -53,8 +53,6 @@ $timestamp4 = strtotime(date('Y-m-d 20:57:00'));
 $_SESSION['expire1'] = $timestamp2;
 $_SESSION['expire2'] = $timestamp3;
 $_SESSION['expire3'] = $timestamp4;
-$now = time();
-$endtime = 1684742400;
 // later
 //   $after_tea_timestart =strtotime(date('Y-m-d 18:44:00'));
 //   $after_tea_timeend=strtotime(date('Y-m-d 20:57:00'));
@@ -76,9 +74,6 @@ if (strtotime(date('Y-m-d 09:00:00')) < $now && $now > $_SESSION['expire1'] && $
 } elseif (strtotime(date('Y-m-d 19:10:00')) < $now && $now > $_SESSION['expire3'] && $now < strtotime(date('Y-m-d 20:55:50'))) {
     session_destroy();
     echo "<p align='center'>Session has been destroyed!!";
-    header("Location: ../../index.php");
-}if ($endtime < $now) {
-    session_destroy();
     header("Location: ../../index.php");
 }
 ?>

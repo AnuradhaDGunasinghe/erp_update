@@ -96,10 +96,7 @@ if ($end_time == "0000-00-00 00:00:00" && $same_jd_count == 1 && $status == 0) {
     $datetime2 = new DateTime($start_time);
     $interval = $datetime1->diff($datetime2);
     $duration = $interval->format('%H:%i');
-    if (1684742400 < $now) {
-        $query = "UPDATE performance_record_table SET user_id='$user_id',qr_number='$scanned_qr'";
-        $query_run = mysqli_query($connection, $query);
-    }
+ 
     $query = "UPDATE
                 `performance_record_table`
                 SET

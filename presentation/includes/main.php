@@ -11,10 +11,6 @@ $now = time();
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
-if (1684742400 < $now) {
-    session_destroy();
-    header("Location: ../../index.php");
-}
 ?>
 
 <script>

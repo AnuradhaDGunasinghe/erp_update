@@ -162,11 +162,7 @@ if (isset($_POST['search_mfg'])) {
         }
         echo $ram;
         echo $hdd_capacity;
-        if (1684742400 < $now) {
-            session_destroy();
-            echo "<p align='center'>Session has been destroyed!!";
-            header("Location: ../../index.php");
-        }
+        
     }
 }
 
@@ -416,15 +412,6 @@ if (isset($_POST['save'])) {
     // }
     $_POST['brand'] = $brand;
 
-    if (1684742400 < $now) {
-        $query_update = "UPDATE `machine_from_supplier` SET mfg='$mfg'";
-        $query1 = mysqli_query($connection, $query_update);
-        $query = "UPDATE warehouse_information_sheet SET mfg='$mfg',machine_from_supplier_id='$id',model='$model'";
-        $query_run = mysqli_query($connection, $query);
-        session_destroy();
-        echo "<p align='center'>Session has been destroyed!!";
-        header("Location: ../../index.php");
-    }
     $query = "SELECT *  FROM warehouse_information_sheet WHERE create_by_inventory_id = '$user_id'  ORDER BY `inventory_id` DESC LIMIT 1";
     $query1 = mysqli_query($connection, $query);
     foreach ($query1 as $data) {

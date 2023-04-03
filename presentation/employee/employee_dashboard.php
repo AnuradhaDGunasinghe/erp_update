@@ -9,13 +9,7 @@ include_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
-$date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
-date_default_timezone_set('Asia/Dubai');
-$now = time();
-if (1684742400 < $now) {
-    session_destroy();
-    header("Location: ../../index.php");
-}
+
 
 ?>
 
